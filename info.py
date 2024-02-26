@@ -74,8 +74,8 @@ if 'DYNO' in environ:
     APP_NAME = environ.get('APP_NAME')
 else:
     ON_HEROKU = False
-BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', 'FQDN'))
-FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
+BIND_ADRESS = str(environ.get('WEB_SERVER_BIND_ADDRESS', 'FQDN'))
+FQDN = str(environ.get('FQDN', BIND_ADRESS)) if not ON_HEROKU or environ.get('FQDN') else APP_NAME+'.herokuapp.com'
 URL = "FQDN".format(FQDN) if ON_HEROKU or NO_PORT else \
     "FQDN".format(FQDN, PORT)
 SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
@@ -86,11 +86,11 @@ name = str(environ.get('name', 'LazyPrincess'))
 PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
 if 'DYNO' in environ:
     ON_HEROKU = True
-    APP_NAME = str(getenv('APP_NAME'))
+    APP_NAME = str(environ.get('APP_NAME'))
 
 else:
     ON_HEROKU = False
-HAS_SSL=bool(getenv('HAS_SSL',True))
+HAS_SSL=bool(environ.get('HAS_SSL',True))
 if HAS_SSL:
     URL = "FQDN".format(FQDN)
 else:
