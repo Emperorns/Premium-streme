@@ -76,8 +76,8 @@ else:
     ON_HEROKU = False
 BIND_ADRESS = str(environ.get('WEB_SERVER_BIND_ADDRESS', 'FQDN'))
 FQDN = str(environ.get('FQDN', BIND_ADRESS)) if not ON_HEROKU or environ.get('FQDN') else APP_NAME+'.herokuapp.com'
-URL = "FQDN".format(FQDN) if ON_HEROKU or NO_PORT else \
-    "FQDN".format(FQDN, PORT)
+URL = "https://premium-streme.onrender.com".format(FQDN) if ON_HEROKU or NO_PORT else \
+    "https://premium-streme.onrender.com".format(FQDN, PORT)
 SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
 WORKERS = int(environ.get('WORKERS', '4'))
 SESSION_NAME = str(environ.get('SESSION_NAME', 'LazyBot'))
@@ -92,9 +92,9 @@ else:
     ON_HEROKU = False
 HAS_SSL=bool(environ.get('HAS_SSL',True))
 if HAS_SSL:
-    URL = "FQDN".format(FQDN)
+    URL = "https://premium-streme.onrender.com".format(FQDN)
 else:
-    URL = "FQDN".format(FQDN)
+    URL = "https://premium-streme.onrender.com".format(FQDN)
     
 LOG_STR = "Current Cusomized Configurations are:-\n"
 LOG_STR += ("IMDB Results are enabled, Bot will be showing imdb details for you queries.\n" if IMDB else "IMBD Results are disabled.\n")
