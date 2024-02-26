@@ -12,18 +12,18 @@ def is_enabled(value, default):
 
 # Bot information
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ.get('API_ID', '23898744'))
-API_HASH = environ.get('API_HASH', '0b13c810c80b548604650cbe3c3db0c3')
-BOT_TOKEN = environ.get('BOT_TOKEN', '6888546325:AAGNlSQCIh2eIUqHVfkP3xc_ZZB_n9lH7yM')
+API_ID = int(environ.get('API_ID', '25377875'))
+API_HASH = environ.get('API_HASH', 'cf80e342be48570ca2e4c9d2c7695413')
+BOT_TOKEN = environ.get('BOT_TOKEN', '7143203672:AAFDozb6u7t2iRqd3j3KY7xD7TCMw3Wdc3M')
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', False ))
 PICS = (environ.get('PICS', 'https://telegra.ph/file/e02e42f8d74f542608227.jpg https://telegra.ph/file/e02e42f8d74f542608227.jpg https://graph.org/file/992c0f0bbb2421b00b03b.jpg https://graph.org/file/027f1b1a04b5d1d2d8570.jpg https://graph.org/file/58897113b411ebc9ba6ed.jpg https://graph.org/file/e631893dade5692d00f4a.jpg https://graph.org/file/2ea5956313f9d26ba4e24.jpg https://graph.org/file/cde23078b696aaf00487b.jpg  https://graph.org/file/6a76d821af95489a230bb.jpg https://graph.org/file/6f9d3dfa3b6873d047bed.jpg https://graph.org/file/04c5c87962ed4c8d456a2.jpg https://graph.org/file/bd8965942893832a66a65.jpg https://graph.org/file/57128f6d942c1313f51de.jpg')).split()
 
 # Admins, Channels & Users
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5698613889').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002116535400').split()]
-auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '2034654684').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001967167299').split()]
+auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '2034654684').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
 auth_channel = environ.get('AUTH_CHANNEL')
 auth_grp = environ.get('AUTH_GROUP')
@@ -36,8 +36,8 @@ DATABASE_NAME = environ.get('DATABASE_NAME', "Telegram")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Others
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL','-1002116535400' ))
-SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '')
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL','-1001748572062' ))
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '-1001761418123')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "True")), False)
 IMDB = is_enabled((environ.get('IMDB', "False")), True)
 SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "True")), True)
@@ -61,7 +61,7 @@ LINK_MODE = is_enabled("LINK_MODE", True)
 SPELL_CHECK_REPLY = is_enabled(environ.get("SPELL_CHECK_REPLY", "True"), True)
 MAX_LIST_ELM = environ.get("MAX_LIST_ELM", None)
 INDEX_REQ_CHANNEL = int(environ.get('INDEX_REQ_CHANNEL', LOG_CHANNEL))
-FILE_STORE_CHANNEL = [int(ch) for ch in (environ.get('FILE_STORE_CHANNEL', '-1002116535400')).split()]
+FILE_STORE_CHANNEL = [int(ch) for ch in (environ.get('FILE_STORE_CHANNEL', '-1001748572062')).split()]
 MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "False")), False)
 PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
@@ -74,10 +74,10 @@ if 'DYNO' in environ:
     APP_NAME = environ.get('APP_NAME')
 else:
     ON_HEROKU = False
-BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', 'https://premiumfilterteat.onrender.com'))
+BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', 'FQDN'))
 FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
-URL = "https://premiumfilterteat.onrender.com/".format(FQDN) if ON_HEROKU or NO_PORT else \
-    "https://premiumfilterteat.onrender.com/".format(FQDN, PORT)
+URL = "FQDN".format(FQDN) if ON_HEROKU or NO_PORT else \
+    "FQDN".format(FQDN, PORT)
 SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
 WORKERS = int(environ.get('WORKERS', '4'))
 SESSION_NAME = str(environ.get('SESSION_NAME', 'LazyBot'))
@@ -92,9 +92,9 @@ else:
     ON_HEROKU = False
 HAS_SSL=bool(getenv('HAS_SSL',True))
 if HAS_SSL:
-    URL = "https://premiumfilterteat.onrender.com/".format(FQDN)
+    URL = "FQDN".format(FQDN)
 else:
-    URL = "https://premiumfilterteat.onrender.com/".format(FQDN)
+    URL = "FQDN".format(FQDN)
     
 LOG_STR = "Current Cusomized Configurations are:-\n"
 LOG_STR += ("IMDB Results are enabled, Bot will be showing imdb details for you queries.\n" if IMDB else "IMBD Results are disabled.\n")
