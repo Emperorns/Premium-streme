@@ -24,6 +24,9 @@ from database.filters_mdb import (
 )
 file_req_channel = FILE_REQ_CHANNEL
 
+from util.human_readable import humanbytes
+from urllib.parse import quote_plus
+from util.file_properties import
 import logging
 
 logger = logging.getLogger(__name__)
@@ -186,20 +189,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     title = chat.title
                 except:
                     await query.message.edit_text("Tʜᴇʀᴇ ᴀʀᴇ ɴᴏ ᴀᴄᴛɪᴠᴇ ᴄᴏɴɴᴇᴄᴛɪᴏɴꜱ!! Cᴏɴɴᴇᴄᴛ ᴛᴏ ꜱᴏᴍᴇ ɢʀᴏᴜᴘꜱ ғɪʀꜱᴛ.", quote=True)
-                    return await query.answer(' ˆ°• 𝙁ɪʟᴍ𝙔 𝙍ᴏʜᴇꜱ𝙃 •°ˆ ')
+                    return await query.answer(' ˆ°• FILMУ ᏒᎾᎻᎬᏕᎻ •°ˆ ')
             else:
                 await query.message.edit_text(
                     "Iᴀᴍ Nᴏᴛ Cᴏɴɴᴇᴄᴛᴇᴅ Tᴏ Aɴʏ Gʀᴏᴜᴩ \nCʜᴇᴄᴋ /connections Oʀ Cᴏɴɴᴇᴄᴛ Tᴏ Aɴʏ Gʀᴏᴜᴩ",
                     quote=True
                 )
-                return await query.answer(' ˆ°• 𝙁ɪʟᴍ𝙔 𝙍ᴏʜᴇꜱ𝙃 •°ˆ ')
+                return await query.answer(' ˆ°• FILMУ ᏒᎾᎻᎬᏕᎻ •°ˆ ')
 
         elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
             grp_id = query.message.chat.id
             title = query.message.chat.title
 
         else:
-            return await query.answer(' ˆ°• 𝙁ɪʟᴍ𝙔 𝙍ᴏʜᴇꜱ𝙃 •°ˆ ')
+            return await query.answer(' ˆ°• FILMУ ᏒᎾᎻᎬᏕᎻ •°ˆ ')
 
         st = await client.get_chat_member(grp_id, userid)
         if (st.status == enums.ChatMemberStatus.OWNER) or (str(userid) in ADMINS):
@@ -253,7 +256,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=keyboard,
             parse_mode=enums.ParseMode.MARKDOWN
         )
-        return await query.answer(' ˆ°• 𝙁ɪʟᴍ𝙔 𝙍ᴏʜᴇꜱ𝙃 •°ˆ ')
+        return await query.answer(' ˆ°• FILMУ ᏒᎾᎻᎬᏕᎻ •°ˆ ')
     elif "connectcb" in query.data:
         await query.answer()
 
@@ -274,7 +277,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
         else:
             await query.message.edit_text('Some error occurred!!', parse_mode=enums.ParseMode.MARKDOWN)
-        return await query.answer(' ˆ°• 𝙁ɪʟᴍ𝙔 𝙍ᴏʜᴇꜱ𝙃 •°ˆ ')
+        return await query.answer(' ˆ°• FILMУ ᏒᎾᎻᎬᏕᎻ •°ˆ ')
     elif "disconnect" in query.data:
         await query.answer()
 
@@ -297,7 +300,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f"Sᴏᴍᴇ Eʀʀᴏʀ Oᴄᴄᴜʀᴇᴅ!!",
                 parse_mode=enums.ParseMode.MARKDOWN
             )
-        return await query.answer(' ˆ°• 𝙁ɪʟᴍ𝙔 𝙍ᴏʜᴇꜱ𝙃 •°ˆ ')
+        return await query.answer(' ˆ°• FILMУ ᏒᎾᎻᎬᏕᎻ •°ˆ ')
     elif "deletecb" in query.data:
         await query.answer()
 
@@ -315,7 +318,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f"Sᴏᴍᴇ Eʀʀᴏʀ Oᴄᴄᴜʀᴇᴅ!!",
                 parse_mode=enums.ParseMode.MARKDOWN
             )
-        return await query.answer(' ˆ°• 𝙁ɪʟᴍ𝙔 𝙍ᴏʜᴇꜱ𝙃 •°ˆ ')
+        return await query.answer(' ˆ°• FILMУ ᏒᎾᎻᎬᏕᎻ •°ˆ ')
     elif query.data == "backcb":
         await query.answer()
 
@@ -326,7 +329,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.message.edit_text(
                 "There are no active connections!! Connect to some groups first.",
             )
-            return await query.answer(' ˆ°• 𝙁ɪʟᴍ𝙔 𝙍ᴏʜᴇꜱ𝙃 •°ˆ ')
+            return await query.answer(' ˆ°• FILMУ ᏒᎾᎻᎬᏕᎻ •°ˆ ')
         buttons = []
         for groupid in groupids:
             try:
@@ -617,7 +620,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "contact":
         buttons = [[
-            InlineKeyboardButton('🥰 Cʀᴇᴀᴛᴏʀ 🥰', url='https://t.me/Filmy_Rohesh_Owner')
+            InlineKeyboardButton('😳 Cʀᴇᴀᴛᴏʀ 😳', url='https://t.me/Filmy_Rohesh_Owner')
         ], [     
             InlineKeyboardButton('📞 Cᴏɴᴛᴀᴄᴛ 📟', url='https://t.me/Filmy_Rohesh_Owner')
         ], [  
@@ -673,6 +676,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ident, set_type, status, grp_id = query.data.split("#")
         grpid = await active_connection(str(query.from_user.id))
 
+    elif data.startswith("generate_stream_link"):
+        _, file_id = data.split(":")
+        try:
+            user_id = query.from_user.id
+            username =  query.from_user.mention 
+
+            log_msg = await client.send_cached_media(
+                chat_id=LOG_CHANNEL,
+                file_id=file_id,
+            )
+            fileName = {quote_plus(get_name(log_msg))}
+            lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
+            lazy_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
+            
         if str(grp_id) != str(grpid):
             await query.message.edit("Your Active Connection Has Been Changed. Go To /settings.")
             return await query.answer('Piracy Is Crime')
@@ -719,7 +736,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ]
             reply_markup = InlineKeyboardMarkup(buttons)
             await query.message.edit_reply_markup(reply_markup)
-    await query.answer(' ˆ°• 𝙁ɪʟᴍ𝙔 𝙍ᴏʜᴇꜱ𝙃 •°ˆ ')
+    await query.answer(' ˆ°• FILMУ ᏒᎾᎻᎬᏕᎻ •°ˆ ')
 
 
 async def auto_filter(client, msg, spoll=False):
@@ -736,7 +753,7 @@ async def auto_filter(client, msg, spoll=False):
                 await client.send_message(file_req_channel,f"-🦋 #REQUESTED_FILE 🦋-\n\n📝Fɪʟᴇ Nᴀᴍᴇ :{search}\n\nRᴇǫᴜᴇsᴛᴇᴅ Bʏ: {message.from_user.first_name}\n\n Usᴇʀ Iᴅ :{message.from_user.id}\n\n🗃Cᴏᴅᴇᴅᴇᴅ Bʏ  @Filmy_Rohesh",
                                                                                                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🔺 Fɪʟᴇ Uᴩʟᴏᴀᴅᴇᴅ Sᴜᴄᴄᴇssғᴜʟʟʏ 🔺", callback_data="close_data")]]))
                 l = await message.reply_text(text=f"△ Hᴇʏ Fʀɪᴇɴᴅ {message.from_user.first_name} 😎,\n\nʏᴏᴜʀ ʀᴇQᴜᴇꜱᴛ ʜᴀꜱ ʙᴇᴇɴ ꜱᴇɴᴛ ᴛᴏ ᴏᴜʀ ᴀᴅᴍɪɴ'ꜱ ᴅᴀꜱʜʙᴏᴀʀᴅ !\n\nᴘʟᴇᴀꜱᴇ ᴋᴇᴇᴘ ꜱᴏᴍᴇ ᴘᴀᴛɪᴇɴᴄᴇ !\nᴛʜᴇʏ ᴡɪʟʟ ᴜᴘʟᴏᴀᴅ ɪᴛ ᴀꜱ ꜱᴏᴏɴ ᴀꜱ ᴘᴏꜱꜱɪʙʟᴇ.\n\n➟ 📝Cᴏɴᴛᴇɴᴛ Nᴀᴍᴇ : {search}\n\n➟ 👮 Rᴇǫᴜᴇsᴛᴇᴅ Bʏ Yᴏᴜ : {message.from_user.first_name}\n\n༺ @MKV_FILES_ROHESH༻\n\n🦋・‥☆Sᴜᴩᴩᴏʀᴛ Oᴜʀ Cʜᴀɴɴᴇʟ ☆‥・🦋\n╰┈➤・☆ @Filmy_Rohesh_Owner ☆",
-                                                                                                       reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("━ • │▌║  Aᴅᴅ Mᴇ Tᴏ Uʀ Gʀᴏᴜᴩ  ║▌│ • ━", url=f'http://t.me/{temp.U_NAME}?startgroup=true')],[InlineKeyboardButton("💠 𝙁ɪʟᴍ𝙔 𝙍ᴏʜᴇꜱ𝙃 💠", url="https://t.me/Filmy_Rohesh"), InlineKeyboardButton("💠 Sᴜᴩᴩᴏʀᴛ Gʀᴏᴜᴩ 💠", url="https://t.me/MKV_FILES_ROHESH"), InlineKeyboardButton("💠 Rᴇᴩᴏ 💠", url="https://github.com/Filmyrohesh/Rohesh-Gavit-PremiumFilter")],[InlineKeyboardButton("╚»♥️Dᴇʟᴇᴛᴇ Tʜɪs Mᴇssᴀɢᴇ ♥️«╝", callback_data="close_data")]]))
+                                                                                                       reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("━ • │▌║  Aᴅᴅ Mᴇ Tᴏ Uʀ Gʀᴏᴜᴩ  ║▌│ • ━", url=f'http://t.me/{temp.U_NAME}?startgroup=true')],[InlineKeyboardButton("✪ FILMУ ᏒᎾᎻᎬᏕᎻ ✪", url="https://t.me/Filmy_Rohesh"), InlineKeyboardButton("✪ Sᴜᴩᴩᴏʀᴛ Gʀᴏᴜᴩ ✪", url="https://t.me/MKV_FILES_ROHESH"), InlineKeyboardButton("✪ Rᴇᴩᴏ ✪", url="https://github.com/Filmyrohesh/Rohesh-Gavit-PremiumFilter")],[InlineKeyboardButton("╚»♥️Dᴇʟᴇᴛᴇ Tʜɪs Mᴇssᴀɢᴇ ♥️«╝", callback_data="close_data")]]))
                 await asyncio.sleep(12)
                 await l.delete()
                 if settings["spell_check"]:
