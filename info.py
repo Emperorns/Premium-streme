@@ -77,7 +77,7 @@ else:
 BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', 'https://premiumfilterteat.onrender.com'))
 FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
 URL = "https://premiumfilter-akm2.onrender.com".format(FQDN) if ON_HEROKU or NO_PORT else \
-    "https://premiumfilter-akm2.onrender.com".format(FQDN, PORT)
+    "https://premiumfilter-akm2.onrender.com".format(FQDN)
 SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
 WORKERS = int(environ.get('WORKERS', '4'))
 SESSION_NAME = str(environ.get('SESSION_NAME', 'LazyBot'))
